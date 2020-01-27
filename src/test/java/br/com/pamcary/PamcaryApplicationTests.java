@@ -6,7 +6,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -20,10 +22,13 @@ import br.com.pamcary.aluno.model.Aluno;
 
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(webEnvironment=WebEnvironment.DEFINED_PORT,
+properties = "port:8000"
+		)
+
 class PamcaryApplicationTests {
 	
-	
+	@Autowired
 	static RestTemplate restTemplate ;
 	HttpHeaders headers ;
 	static JSONObject alunoJson ;
